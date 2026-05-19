@@ -1,0 +1,38 @@
+@page "/skills"
+
+<PageTitle>Skills | Portfolio</PageTitle>
+
+<header class="page-header">
+    <p class="page-eyebrow">Skills</p>
+    <h1>スキル</h1>
+</header>
+
+<section class="skills-grid">
+    @foreach (var skill in skills)
+    {
+        <div class="skill-card">
+            <div class="skill-icon">@skill.Icon</div>
+            <div class="skill-body">
+                <h2>@skill.Name</h2>
+                <p class="skill-level">@skill.Level</p>
+                <p class="skill-desc">@skill.Description</p>
+            </div>
+        </div>
+    }
+</section>
+
+@code {
+    private record Skill(string Icon, string Name, string Level, string Description);
+
+    private readonly Skill[] skills = new[]
+    {
+        new Skill("💻", "C# / WinForms / .NET Framework 3.x / .NET8", "実務 6 年",
+            "Windowsデスクトップ開発やWebアプリケーションで使用しています。"),
+        new Skill("🗄", "SQL", "業務での実装経験あり",
+            "データ抽出・更新処理、既存クエリの読解と改修などに利用しています。"),
+        new Skill("🌿", "Git", "日常的に使用",
+            "バージョン管理ツールとして日常的に使用しています。"),
+        new Skill("🎨", "HTML / CSS", "基本的な実装",
+            "画面の基本的な実装に対応できます。"),
+    };
+}
